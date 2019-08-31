@@ -1,9 +1,12 @@
-import { SET_NAME } from '@/store/actions/types';
+import { LOGIN } from '@/store/actions/types';
 
 // eslint-disable-next-line import/prefer-default-export
-export const setName = name => {
+export const login = (name, deviceId) => {
     return {
-        type: SET_NAME,
-        payload: name,
+        type: LOGIN,
+        payload: {
+            name,
+            deviceId,
+        },
     };
 };

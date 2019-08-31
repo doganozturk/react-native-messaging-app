@@ -5,7 +5,7 @@ import { colors } from '@/theming';
 export default function Chat() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Chat container!!!</Text>
+            <Text style={styles.text}>Chat Container</Text>
         </View>
     );
 }

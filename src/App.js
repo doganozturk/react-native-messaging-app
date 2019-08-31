@@ -14,7 +14,12 @@ const AppNavigator = createStackNavigator(
                 header: null,
             }),
         },
-        Chat,
+        Chat: {
+            screen: Chat,
+            navigationOptions: ({ navigation }) => ({
+                title: navigation.state.params.name,
+            }),
+        },
     },
     {
         initialRouteName: 'Login',

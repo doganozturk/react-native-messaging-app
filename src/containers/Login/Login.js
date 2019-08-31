@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from 'react-navigation-hooks';
 import { colors } from '@/theming';
 import { MAButton, MATextInput } from '@/components';
+import { login } from '@/store/actions';
 
 const ERROR_MESSAGE = 'Provide a name longer than 2 characters!';
 
@@ -10,6 +13,8 @@ export default function Login() {
     const [name, setName] = useState('');
     const [touched, setTouched] = useState(false);
     const [error, setError] = useState('');
+    const { navigate } = useNavigation();
+    const dispatch = useDispatch();
 
     const onNameChange = text => {
         setName(text);
@@ -26,8 +31,10 @@ export default function Login() {
 
         setError(name.length <= 2 ? ERROR_MESSAGE : '');
 
-        /* eslint-disable-next-line */
-        console.log(name);
+        if (name.length > 2) {
+            dispatch(login(name, '234234234'));
+            navigate('Chat', { name });
+        }
     };
 
     return (
