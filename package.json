@@ -1,8 +1,9 @@
 {
-  "name": "messagingApp",
+  "name": "messaging-app",
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "postinstall": "patch-package",
     "start": "react-native start",
     "test": "jest"
   },
@@ -17,6 +18,7 @@
     "babel-jest": "^24.1.0",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "0.54.1",
+    "patch-package": "^6.1.2",
     "react-test-renderer": "16.8.6"
   },
   "jest": {
