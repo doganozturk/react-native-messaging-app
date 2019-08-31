@@ -1,105 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
-import { SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar } from 'react-native';
+import { Provider } from 'react-redux';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import store from '@/store';
 
-import {
-    Header,
-    LearnMoreLinks,
-    Colors,
-    DebugInstructions,
-    ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App = () => {
+export default function App() {
     return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView>
-                <ScrollView contentInsetAdjustmentBehavior="automatic" style={styles.scrollView}>
-                    <Header />
-                    {global.HermesInternal == null ? null : (
-                        <View style={styles.engine}>
-                            <Text style={styles.footer}>Engine: Hermes</Text>
-                        </View>
-                    )}
-                    <View style={styles.body}>
-                        <View style={styles.sectionContainer}>
-                            <Text style={styles.sectionTitle}>Step One</Text>
-                            <Text style={styles.sectionDescription}>
-                                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                                screen and then come back to see your edits.
-                            </Text>
-                        </View>
-                        <View style={styles.sectionContainer}>
-                            <Text style={styles.sectionTitle}>See Your Changes</Text>
-                            <Text style={styles.sectionDescription}>
-                                <ReloadInstructions />
-                            </Text>
-                        </View>
-                        <View style={styles.sectionContainer}>
-                            <Text style={styles.sectionTitle}>Debug</Text>
-                            <Text style={styles.sectionDescription}>
-                                <DebugInstructions />
-                            </Text>
-                        </View>
-                        <View style={styles.sectionContainer}>
-                            <Text style={styles.sectionTitle}>Learn More</Text>
-                            <Text style={styles.sectionDescription}>
-                                Read the docs to discover what to do next:
-                            </Text>
-                        </View>
-                        <LearnMoreLinks />
+        <Provider store={store({})}>
+            <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}>
+                <View style={styles.formContainer}>
+                    <TextInput style={styles.nameInput} />
+                    <View style={styles.loginButton}>
+                        <Text>JOIN</Text>
                     </View>
-                </ScrollView>
-            </SafeAreaView>
-        </>
+                </View>
+            </LinearGradient>
+        </Provider>
     );
+}
+
+const colors = {
+    white: '#fff',
+    black: '#000',
 };
 
 const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: Colors.lighter,
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.white,
     },
-    engine: {
-        position: 'absolute',
-        right: 0,
+    formContainer: {
+        width: '80%',
+        height: 300,
+        padding: 20,
+        borderWidth: 3,
+        borderRadius: 10,
+        borderColor: colors.black,
+        borderStyle: 'solid',
     },
-    body: {
-        backgroundColor: Colors.white,
+    nameInput: {
+        width: '100%',
+        height: 40,
+        borderWidth: 3,
+        borderRadius: 4,
+        borderColor: colors.black,
+        borderStyle: 'solid',
     },
-    sectionContainer: {
-        marginTop: 32,
-        paddingHorizontal: 24,
-    },
-    sectionTitle: {
-        fontSize: 24,
-        fontWeight: '600',
-        color: Colors.black,
-    },
-    sectionDescription: {
-        marginTop: 8,
-        fontSize: 18,
-        fontWeight: '400',
-        color: Colors.dark,
-    },
-    highlight: {
-        fontWeight: '700',
-    },
-    footer: {
-        color: Colors.dark,
-        fontSize: 12,
-        fontWeight: '600',
-        padding: 4,
-        paddingRight: 12,
-        textAlign: 'right',
+    loginButton: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: 40,
+        marginTop: 20,
+        borderWidth: 3,
+        borderRadius: 4,
+        borderColor: colors.black,
+        borderStyle: 'solid',
+        backgroundColor: colors.white,
     },
 });
-
-export default App;
