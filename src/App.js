@@ -12,6 +12,7 @@ const AppNavigator = createStackNavigator(
             screen: Login,
             navigationOptions: () => ({
                 header: null,
+                headerBackTitle: 'Leave',
             }),
         },
         Chat: {
