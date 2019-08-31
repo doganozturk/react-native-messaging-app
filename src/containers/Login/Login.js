@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { colors, sizings } from '@/theming';
+import { colors } from '@/theming';
+import { MAButton, MATextInput } from '@/components';
 
 const ERROR_MESSAGE = 'Provide a name longer than 2 characters!';
 
@@ -29,39 +30,17 @@ export default function Login() {
         console.log(name);
     };
 
-    const renderError = () => {
-        if (!error) {
-            return null;
-        }
-
-        return <Text style={styles.errorText}>{error}</Text>;
-    };
-
     return (
         <LinearGradient colors={colors.mainGradientColor} style={styles.container}>
             <Text style={styles.welcomeText}>Glad to see you!</Text>
             <View style={styles.formContainer}>
-                <TextInput
-                    style={styles.nameInput}
+                <MATextInput
                     placeholder="Enter your name..."
-                    autoCorrect={false}
-                    autoCapitalize="none"
                     value={name}
                     onChangeText={onNameChange}
+                    error={error}
                 />
-                {renderError()}
-                <TouchableOpacity
-                    style={sizings.fullWidth}
-                    onPress={onButtonPress}
-                    disabled={!!error}
-                >
-                    <LinearGradient
-                        colors={colors.mainGradientColor}
-                        style={[styles.loginButton, error ? styles.loginButtonError : null]}
-                    >
-                        <Text style={styles.loginButtonText}>JOIN</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
+                <MAButton text="JOIN" onButtonPress={onButtonPress} error={error} />
             </View>
         </LinearGradient>
     );
@@ -96,39 +75,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 10,
-    },
-    nameInput: {
-        width: '100%',
-        height: 45,
-        paddingTop: 5,
-        paddingBottom: 5,
-        paddingLeft: 10,
-        paddingRight: 10,
-        borderWidth: 3,
-        borderRadius: 5,
-        borderColor: colors.lightgray,
-        borderStyle: 'solid',
-    },
-    loginButton: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        height: 45,
-        marginTop: 20,
-        borderRadius: 5,
-    },
-    loginButtonError: {
-        opacity: 0.5,
-    },
-    loginButtonText: {
-        fontSize: 20,
-        fontWeight: '600',
-        color: colors.lightgray,
-    },
-    errorText: {
-        width: '100%',
-        marginTop: 5,
-        fontSize: 12,
-        color: colors.pink,
     },
 });
