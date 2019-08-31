@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from 'react-navigation-hooks';
+import DeviceInfo from 'react-native-device-info';
 import { colors } from '@/theming';
 import { MAButton, MATextInput } from '@/components';
 import { login } from '@/store/actions';
@@ -32,7 +33,7 @@ export default function Login() {
         setError(name.length <= 2 ? ERROR_MESSAGE : '');
 
         if (name.length > 2) {
-            dispatch(login(name, '234234234'));
+            dispatch(login(name, DeviceInfo.getUniqueID()));
             navigate('Chat', { name });
         }
     };
