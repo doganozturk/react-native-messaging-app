@@ -1,27 +1,70 @@
 {
-  "name": "messaging-app",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "postinstall": "patch-package",
-    "start": "react-native start",
-    "test": "jest"
-  },
-  "dependencies": {
-    "react": "16.8.6",
-    "react-native": "0.60.5"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.5.0",
-    "@babel/runtime": "^7.5.0",
-    "@react-native-community/eslint-config": "^0.0.3",
-    "babel-jest": "^24.1.0",
-    "jest": "^24.1.0",
-    "metro-react-native-babel-preset": "0.54.1",
-    "patch-package": "^6.1.2",
-    "react-test-renderer": "16.8.6"
-  },
-  "jest": {
-    "preset": "react-native"
-  }
+    "name": "messaging-app",
+    "version": "1.0.0",
+    "repository": "https://github.com/doganozturk/react-native-messaging-app.git",
+    "author": "doganozturk <doganozturk2005@gmail.com>",
+    "license": "MIT",
+    "engines": {
+        "node": "10.16.3"
+    },
+    "private": true,
+    "scripts": {
+        "postinstall": "patch-package",
+        "start:bundler": "react-native start",
+        "start:bundler:nocache": "react-native start --reset-cache",
+        "start:ios": "react-native run-ios",
+        "start:android": "react-native run-android",
+        "test": "jest",
+        "lint": "eslint",
+        "lint:all": "eslint '**/*.{js,json}'",
+        "lint:fix": "eslint --fix '**/*.{js,json}'",
+        "format": "prettier --write",
+        "format:all": "prettier --write '**/*.{js,json}'"
+    },
+    "lint-staged": {
+        "*.{js,json}": [
+            "npm run format",
+            "npm run lint",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "dependencies": {
+        "react": "16.8.6",
+        "react-native": "0.60.5",
+        "react-redux": "^7.1.1",
+        "redux": "^4.0.4",
+        "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.0",
+        "@babel/runtime": "^7.5.0",
+        "babel-eslint": "^10.0.3",
+        "babel-jest": "^24.1.0",
+        "babel-plugin-module-resolver": "^3.2.0",
+        "eslint": "^6.3.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-config-prettier": "^6.1.0",
+        "eslint-import-resolver-alias": "^1.1.2",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-json": "^1.4.0",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-react-native": "^3.7.0",
+        "husky": "^3.0.4",
+        "jest": "^24.1.0",
+        "lint-staged": "^9.2.5",
+        "metro-react-native-babel-preset": "0.54.1",
+        "patch-package": "^6.1.2",
+        "prettier": "^1.18.2",
+        "react-test-renderer": "16.8.6"
+    },
+    "jest": {
+        "preset": "react-native"
+    }
 }
