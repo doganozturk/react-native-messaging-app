@@ -1,9 +1,42 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { colors } from '@/theming';
+import { colors, sizings } from '@/theming';
+
+const ERROR_MESSAGE = 'Provide a name longer than 2 characters!';
 
 export default function Login() {
+    const [name, setName] = useState('');
+    const [touched, setTouched] = useState(false);
+    const [error, setError] = useState('');
+
+    const onNameChange = text => {
+        setName(text);
+
+        if (touched) {
+            setError(text.length > 2 ? '' : ERROR_MESSAGE);
+        }
+    };
+
+    const onButtonPress = () => {
+        if (!touched) {
+            setTouched(true);
+        }
+
+        setError(name.length <= 2 ? ERROR_MESSAGE : '');
+
+        /* eslint-disable-next-line */
+        console.log(name);
+    };
+
+    const renderError = () => {
+        if (!error) {
+            return null;
+        }
+
+        return <Text style={styles.errorText}>{error}</Text>;
+    };
+
     return (
         <LinearGradient colors={colors.mainGradientColor} style={styles.container}>
             <Text style={styles.welcomeText}>Glad to see you!</Text>
@@ -13,10 +46,22 @@ export default function Login() {
                     placeholder="Enter your name..."
                     autoCorrect={false}
                     autoCapitalize="none"
+                    value={name}
+                    onChangeText={onNameChange}
                 />
-                <LinearGradient colors={colors.mainGradientColor} style={styles.loginButton}>
-                    <Text style={styles.loginButtonText}>JOIN</Text>
-                </LinearGradient>
+                {renderError()}
+                <TouchableOpacity
+                    style={sizings.fullWidth}
+                    onPress={onButtonPress}
+                    disabled={!!error}
+                >
+                    <LinearGradient
+                        colors={colors.mainGradientColor}
+                        style={[styles.loginButton, error ? styles.loginButtonError : null]}
+                    >
+                        <Text style={styles.loginButtonText}>JOIN</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
             </View>
         </LinearGradient>
     );
@@ -36,9 +81,9 @@ const styles = StyleSheet.create({
     },
     formContainer: {
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         width: '80%',
-        height: 150,
+        height: 'auto',
         marginTop: 30,
         padding: 20,
         borderRadius: 6,
@@ -72,9 +117,18 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderRadius: 5,
     },
+    loginButtonError: {
+        opacity: 0.5,
+    },
     loginButtonText: {
         fontSize: 20,
         fontWeight: '600',
         color: colors.lightgray,
+    },
+    errorText: {
+        width: '100%',
+        marginTop: 5,
+        fontSize: 12,
+        color: colors.pink,
     },
 });
