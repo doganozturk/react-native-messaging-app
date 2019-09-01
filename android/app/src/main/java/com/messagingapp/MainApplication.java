@@ -15,6 +15,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
         packages.add(new LinearGradientPackage());
         packages.add(new RNGestureHandlerPackage());
         packages.add(new RNDeviceInfo());
+        packages.add(new AsyncStoragePackage());
         return packages;
     }
 

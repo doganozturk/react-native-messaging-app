@@ -35,6 +35,7 @@ const AppNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Login',
+        headerLayoutPreset: 'center',
     },
 );
 
