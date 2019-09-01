@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import { MessageListItem } from '@/components/MessageListItem';
 
-/* eslint-disable import/prefer-default-export */
 export function MessageList({ messages }) {
     return (
         <FlatList
@@ -13,6 +13,25 @@ export function MessageList({ messages }) {
         />
     );
 }
+
+MessageList.propTypes = {
+    messages: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            user: PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                name: PropTypes.string.isRequired,
+                avatarUrl: PropTypes.string,
+            }).isRequired,
+            text: PropTypes.string.isRequired,
+            timestamp: PropTypes.number.isRequired,
+        }),
+    ),
+};
+
+MessageList.defaultProps = {
+    messages: [],
+};
 
 const styles = StyleSheet.create({
     container: {

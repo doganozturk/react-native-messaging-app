@@ -4,7 +4,6 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { colors, sizings } from '@/theming';
 
-/* eslint-disable import/prefer-default-export */
 export function MAButton({ text, onButtonPress, error, disabled }) {
     return (
         <TouchableOpacity

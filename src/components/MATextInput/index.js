@@ -3,7 +3,6 @@ import { TextInput, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { colors } from '@/theming/colors';
 
-/* eslint-disable import/prefer-default-export */
 export function MATextInput({
     placeholder,
     autoCorrect,

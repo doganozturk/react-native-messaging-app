@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { colors } from '@/theming/colors';
-import { Avatar, Time } from '@/components';
+import PropTypes from 'prop-types';
+import { colors } from '@/theming';
+import { Avatar } from '@/components/Avatar';
+import { Time } from '@/components/Time';
 
-/* eslint-disable import/prefer-default-export */
 export function MessageListItem({ message }) {
     return (
         <View style={styles.topContainer}>
@@ -18,6 +19,19 @@ export function MessageListItem({ message }) {
         </View>
     );
 }
+
+MessageListItem.propTypes = {
+    message: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        user: PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            avatarUrl: PropTypes.string,
+        }).isRequired,
+        text: PropTypes.string.isRequired,
+        timestamp: PropTypes.number.isRequired,
+    }).isRequired,
+};
 
 const styles = StyleSheet.create({
     topContainer: {

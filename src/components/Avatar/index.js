@@ -1,10 +1,20 @@
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { colors } from '@/theming/colors';
+import PropTypes from 'prop-types';
+import { colors } from '@/theming';
 
 export function Avatar({ src, style }) {
     return <Image style={[styles.image, style]} source={{ uri: src }} />;
 }
+
+Avatar.propTypes = {
+    src: PropTypes.string.isRequired,
+    style: Image.propTypes.style,
+};
+
+Avatar.defaultProps = {
+    style: {},
+};
 
 const styles = StyleSheet.create({
     image: {
