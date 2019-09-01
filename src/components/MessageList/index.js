@@ -15,18 +15,7 @@ export function MessageList({ messages }) {
 }
 
 MessageList.propTypes = {
-    messages: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            user: PropTypes.shape({
-                id: PropTypes.number.isRequired,
-                name: PropTypes.string.isRequired,
-                avatarUrl: PropTypes.string,
-            }).isRequired,
-            text: PropTypes.string.isRequired,
-            timestamp: PropTypes.number.isRequired,
-        }),
-    ),
+    messages: PropTypes.arrayOf(MessageListItem.propTypes.message),
 };
 
 MessageList.defaultProps = {
