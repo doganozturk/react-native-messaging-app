@@ -34,6 +34,8 @@
         }
     },
     "dependencies": {
+        "@react-native-community/async-storage": "^1.6.1",
+        "firebase": "^6.5.0",
         "prop-types": "^15.7.2",
         "react": "16.8.6",
         "react-native": "0.60.5",

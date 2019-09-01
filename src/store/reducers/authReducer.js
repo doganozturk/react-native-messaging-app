@@ -1,17 +1,21 @@
-import { LOGIN } from '@/store/actions/types';
+import { LOGIN, LOGOUT } from '@/store/actions/types';
 
 const INITIAL_STATE = {
     name: '',
-    deviceId: '',
+    userId: '',
 };
 
-const authReducer = (state = INITIAL_STATE, { type, payload: { name, deviceId } = {} }) => {
+const authReducer = (state = INITIAL_STATE, { type, payload: { name, userId } = {} }) => {
     switch (type) {
         case LOGIN:
             return {
-                ...state,
                 name,
-                deviceId,
+                userId,
+            };
+        case LOGOUT:
+            return {
+                name: '',
+                userId: '',
             };
         default:
             return state;

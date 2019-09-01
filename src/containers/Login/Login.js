@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from 'react-navigation-hooks';
 import DeviceInfo from 'react-native-device-info';
+import AsyncStorage from '@react-native-community/async-storage';
 import { colors } from '@/theming';
 import { MAButton, MATextInput } from '@/components';
-import { login } from '@/store/actions';
+import { login, checkLogin } from '@/store/actions';
 
 const ERROR_MESSAGE = 'Provide a name longer than 2 characters!';
 
@@ -16,6 +17,16 @@ export default function Login() {
     const [error, setError] = useState('');
     const { navigate } = useNavigation();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        const checkUserLogin = async () => {
+            const userId = await AsyncStorage.getItem('userId');
+
+            dispatch(checkLogin(userId, DeviceInfo.getUniqueID()));
+        };
+
+        checkUserLogin();
+    }, []);
 
     const onNameChange = text => {
         setName(text);
