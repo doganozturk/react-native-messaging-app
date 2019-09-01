@@ -8,7 +8,8 @@ import { colors } from '@/theming';
 export default function Chat() {
     const [userMessage, setUserMessage] = useState('');
     const messages = useSelector(state => state.messages.messages);
-    const name = useSelector(state => state.auth.name);
+    const userId = useSelector(state => state.auth.userId);
+    const userName = useSelector(state => state.auth.name);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export default function Chat() {
     }, []);
 
     const onButtonPress = () => {
-        dispatch(postMessage(userMessage, name));
+        dispatch(postMessage(userMessage, userId, userName));
         setUserMessage('');
     };
 

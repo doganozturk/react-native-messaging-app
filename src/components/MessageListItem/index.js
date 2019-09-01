@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import PropTypes from 'prop-types';
 import { colors } from '@/theming';
@@ -7,10 +8,16 @@ import { Avatar } from '@/components/Avatar';
 import { Time } from '@/components/Time';
 
 export function MessageListItem({ message }) {
+    const userId = useSelector(state => state.auth.userId);
+    const isUserMessage = message.user.id === userId;
+
     return (
-        <View style={styles.topContainer}>
+        <View style={[styles.topContainer, isUserMessage ? styles.topContainerReverse : null]}>
             <Avatar src={message.user.avatarUrl} style={styles.avatar} />
-            <LinearGradient colors={colors.mainGradientColor} style={styles.messageWrapper}>
+            <LinearGradient
+                colors={colors.mainGradientColor}
+                style={[styles.messageWrapper, isUserMessage ? styles.messageWrapperReverse : null]}
+            >
                 <View style={styles.messageContainer}>
                     <Text style={styles.messageText}>{message.text}</Text>
                 </View>
@@ -24,7 +31,7 @@ MessageListItem.propTypes = {
     message: PropTypes.shape({
         id: PropTypes.number.isRequired,
         user: PropTypes.shape({
-            id: PropTypes.number.isRequired,
+            id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
             avatarUrl: PropTypes.string,
         }).isRequired,
@@ -41,6 +48,9 @@ const styles = StyleSheet.create({
         width: '100%',
         marginBottom: 40,
     },
+    topContainerReverse: {
+        flexDirection: 'row-reverse',
+    },
     avatar: {
         position: 'relative',
         top: 20,
@@ -50,8 +60,13 @@ const styles = StyleSheet.create({
         minWidth: 100,
         maxWidth: 250,
         marginLeft: 10,
+        marginRight: 10,
         borderRadius: 10,
         borderBottomLeftRadius: 0,
+    },
+    messageWrapperReverse: {
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 0,
     },
     messageContainer: {
         padding: 10,

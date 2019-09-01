@@ -89,13 +89,13 @@ export const fetchMessages = () => {
     };
 };
 
-export const postMessage = (message, userName) => {
+export const postMessage = (message, userId, userName) => {
     return {
         type: POST_MESSAGE,
         payload: {
             message: {
                 user: {
-                    id: 3,
+                    id: userId,
                     name: userName,
                     avatarUrl:
                         'https://m5iukwhkpm2xn85r44dml0ld-wpengine.netdna-ssl.com/wp-content/uploads/2018/07/%C5%9Fener-%C5%9Fennnn-770x513.jpg',

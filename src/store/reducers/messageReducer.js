@@ -8,7 +8,10 @@ const messageReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case FETCH_MESSAGES:
             return {
-                messages: action.payload.messages,
+                messages: action.payload.messages.map(message => ({
+                    ...message,
+                    user: { ...message.user, id: message.user.id.toString() },
+                })),
             };
         case POST_MESSAGE:
             return {
