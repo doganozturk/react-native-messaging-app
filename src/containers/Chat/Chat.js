@@ -1,21 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
-import { fetchMessages } from '@/store/actions';
-import { MessageList } from '@/components';
+import { fetchMessages, postMessage } from '@/store/actions';
+import { MessageList, MAButton, MATextInput } from '@/components';
 import { colors } from '@/theming';
 
 export default function Chat() {
+    const [userMessage, setUserMessage] = useState('');
     const messages = useSelector(state => state.messages.messages);
+    const name = useSelector(state => state.auth.name);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchMessages());
     }, []);
 
+    const onButtonPress = () => {
+        dispatch(postMessage(userMessage, name));
+        setUserMessage('');
+    };
+
     return (
         <View style={styles.container}>
             <MessageList messages={messages} />
+            <View style={styles.inputArea}>
+                <View style={styles.inputWrapper}>
+                    <MATextInput
+                        placeholder="Write something..."
+                        value={userMessage}
+                        onChangeText={text => setUserMessage(text)}
+                    />
+                </View>
+                <View style={styles.buttonWrapper}>
+                    <MAButton
+                        text="SEND"
+                        onButtonPress={onButtonPress}
+                        disabled={!userMessage.length}
+                    />
+                </View>
+            </View>
         </View>
     );
 }
@@ -30,5 +53,16 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         paddingRight: 10,
         backgroundColor: colors.lightgray,
+    },
+    inputArea: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    inputWrapper: {
+        width: '75%',
+    },
+    buttonWrapper: {
+        width: '20%',
     },
 });

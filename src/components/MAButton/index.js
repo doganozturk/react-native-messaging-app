@@ -13,7 +13,7 @@ export function MAButton({ text, onButtonPress, error, disabled }) {
         >
             <LinearGradient
                 colors={colors.mainGradientColor}
-                style={[styles.button, error ? styles.buttonError : null]}
+                style={[styles.button, error || disabled ? styles.buttonError : null]}
             >
                 <Text style={styles.buttonText}>{text}</Text>
             </LinearGradient>
@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: 45,
-        marginTop: 20,
         borderRadius: 5,
     },
     buttonError: {

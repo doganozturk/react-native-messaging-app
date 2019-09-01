@@ -59,7 +59,9 @@ export default function Login() {
                     onChangeText={onNameChange}
                     error={error}
                 />
-                <MAButton text="JOIN" onButtonPress={onButtonPress} error={error} />
+                <View style={styles.buttonWrapper}>
+                    <MAButton text="JOIN" onButtonPress={onButtonPress} error={error} />
+                </View>
             </View>
         </LinearGradient>
     );
@@ -94,5 +96,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 10,
+    },
+    buttonWrapper: {
+        width: '100%',
+        marginTop: 20,
     },
 });

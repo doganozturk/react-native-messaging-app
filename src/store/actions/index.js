@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { db } from '@/firebase.config';
-import { LOGIN, LOGOUT, FETCH_MESSAGES } from '@/store/actions/types';
+import { LOGIN, LOGOUT, FETCH_MESSAGES, POST_MESSAGE } from '@/store/actions/types';
 import navigationService from '@/services/navigationService';
 
 const setUser = (name, userId) => ({
@@ -86,5 +86,23 @@ export const fetchMessages = () => {
         const data = await response.json();
 
         return dispatch(setMessages(data));
+    };
+};
+
+export const postMessage = (message, userName) => {
+    return {
+        type: POST_MESSAGE,
+        payload: {
+            message: {
+                user: {
+                    id: 3,
+                    name: userName,
+                    avatarUrl:
+                        'https://m5iukwhkpm2xn85r44dml0ld-wpengine.netdna-ssl.com/wp-content/uploads/2018/07/%C5%9Fener-%C5%9Fennnn-770x513.jpg',
+                },
+                text: message,
+                timestamp: new Date().getTime(),
+            },
+        },
     };
 };
