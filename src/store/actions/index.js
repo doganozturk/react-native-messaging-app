@@ -25,10 +25,11 @@ export const login = (name, deviceId) => {
 
             if (response && response.id) {
                 await AsyncStorage.setItem('userId', response.id);
+
                 return dispatch(setUser(name, response.id));
             }
 
-            return dispatch(resetUser());
+            return null;
         } catch {
             return dispatch(resetUser());
         }
@@ -50,7 +51,7 @@ export const checkLogin = (userId, deviceId) => {
                 return dispatch(setUser(data.name, userId));
             }
 
-            return dispatch(resetUser());
+            return null;
         } catch {
             return dispatch(resetUser());
         }
