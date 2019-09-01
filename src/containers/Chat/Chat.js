@@ -1,19 +1,21 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { View, StyleSheet } from 'react-native';
+import { fetchMessages } from '@/store/actions';
+import { MessageList } from '@/components';
 import { colors } from '@/theming';
 
 export default function Chat() {
-    // eslint-disable-next-line
-    const name = useSelector(state => {
-        // eslint-disable-next-line
-        console.log(state);
-        return state.auth.name;
-    });
+    const messages = useSelector(state => state.messages.messages);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchMessages());
+    }, []);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Chat Container</Text>
+            <MessageList messages={messages} />
         </View>
     );
 }
@@ -21,12 +23,12 @@ export default function Chat() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
         width: '100%',
-    },
-    text: {
-        fontSize: 20,
-        color: colors.black,
+        height: 'auto',
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
+        backgroundColor: colors.lightgray,
     },
 });

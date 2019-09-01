@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { db } from '@/firebase.config';
-import { LOGIN, LOGOUT } from '@/store/actions/types';
+import { LOGIN, LOGOUT, FETCH_MESSAGES } from '@/store/actions/types';
 import navigationService from '@/services/navigationService';
 
 const setUser = (name, userId) => ({
@@ -13,6 +13,13 @@ const setUser = (name, userId) => ({
 
 const resetUser = () => ({
     type: LOGOUT,
+});
+
+const setMessages = messages => ({
+    type: FETCH_MESSAGES,
+    payload: {
+        messages,
+    },
 });
 
 export const login = (name, deviceId) => {
@@ -68,5 +75,16 @@ export const logout = userId => {
         await AsyncStorage.removeItem('userId');
 
         return dispatch(resetUser());
+    };
+};
+
+export const fetchMessages = () => {
+    return async dispatch => {
+        const response = await fetch(
+            'https://jsonblob.com/api/jsonBlob/4f421a10-5c4d-11e9-8840-0b16defc864d',
+        );
+        const data = await response.json();
+
+        return dispatch(setMessages(data));
     };
 };
