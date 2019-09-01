@@ -49,5 +49,5 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
         bottom: 0,
-    }
+    },
 });
