@@ -37,12 +37,14 @@ git clone https://github.com/doganozturk/react-native-messaging-app.git
   
 cd messagingApp  
   
-# Install project dependencies npm install  
+# Install project dependencies
+ npm install  
 ```  
   
 #### For iOS   
 ```  
 cd ios   
+
 # Install native dependiences through CocoaPods  
 pod install  
   
