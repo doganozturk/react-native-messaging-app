@@ -73,6 +73,7 @@
         "metro-react-native-babel-preset": "0.54.1",
         "patch-package": "^6.1.2",
         "prettier": "^1.18.2",
+        "react-native-dotenv": "^0.2.0",
         "react-test-renderer": "16.8.6"
     },
     "jest": {

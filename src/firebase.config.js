@@ -1,14 +1,24 @@
 import firebase from 'firebase';
 import 'firebase/firestore';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+    API_KEY,
+    AUTH_DOMAIN,
+    DATABASE_URL,
+    PROJECT_ID,
+    STORAGE_BUCKET,
+    MESSAGING_SENDER_ID,
+    APP_ID,
+} from 'react-native-dotenv';
 
 const config = {
-    apiKey: 'AIzaSyD4fjnMzpNTUHPJF8LjEn_PO8m9pEPduZI',
-    authDomain: 'messaging-app-52dd9.firebaseapp.com',
-    databaseURL: 'https://messaging-app-52dd9.firebaseio.com',
-    projectId: 'messaging-app-52dd9',
-    storageBucket: '',
-    messagingSenderId: '453331278894',
-    appId: '1:453331278894:web:49e7fa5d3ebf8bb9',
+    apiKey: API_KEY,
+    authDomain: AUTH_DOMAIN,
+    databaseURL: DATABASE_URL,
+    projectId: PROJECT_ID,
+    storageBucket: STORAGE_BUCKET,
+    messagingSenderId: MESSAGING_SENDER_ID,
+    appId: APP_ID,
 };
 
 firebase.initializeApp(config);
