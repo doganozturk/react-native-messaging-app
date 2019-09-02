@@ -7,7 +7,6 @@
     "engines": {
         "node": "10.16.3"
     },
-    "private": true,
     "scripts": {
         "postinstall": "patch-package",
         "start:bundler": "react-native start",
