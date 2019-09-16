@@ -5,7 +5,7 @@ import { fetchMessages, postMessage } from '@/store/actions';
 import { MessageList, MAButton, MATextInput } from '@/components';
 import { colors } from '@/theming';
 
-export default function Chat() {
+export default function Index() {
     const [userMessage, setUserMessage] = useState('');
     const messages = useSelector(state => state.messages.messages);
     const userId = useSelector(state => state.auth.userId);

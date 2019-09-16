@@ -5,12 +5,12 @@ const INITIAL_STATE = {
     userId: '',
 };
 
-const authReducer = (state = INITIAL_STATE, { type, payload: { name, userId } = {} }) => {
-    switch (type) {
+const authReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
         case LOGIN:
             return {
-                name,
-                userId,
+                name: action.payload.name,
+                userId: action.payload.userId,
             };
         case LOGOUT:
             return {

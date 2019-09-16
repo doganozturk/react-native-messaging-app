@@ -11,7 +11,7 @@ import { login, checkLogin } from '@/store/actions';
 
 const ERROR_MESSAGE = 'Provide a name longer than 2 characters!';
 
-export default function Login() {
+export default function Index() {
     const [name, setName] = useState('');
     const [touched, setTouched] = useState(false);
     const [error, setError] = useState('');

@@ -81,7 +81,7 @@ export const logout = userId => {
 export const fetchMessages = () => {
     return async dispatch => {
         const response = await fetch(
-            'https://jsonblob.com/api/jsonBlob/4f421a10-5c4d-11e9-8840-0b16defc864d',
+            'https://jsonblob.com/api/jsonBlob/5eaa632d-d887-11e9-9ec2-6ba2d03581bf',
         );
         const data = await response.json();
 

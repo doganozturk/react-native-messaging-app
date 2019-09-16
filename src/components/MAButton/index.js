@@ -7,7 +7,7 @@ import { colors, sizings } from '@/theming';
 export function MAButton({ text, onButtonPress, error, disabled }) {
     return (
         <TouchableOpacity
-            style={sizings.fullWidth}
+            style={styles.buttonWrapper}
             onPress={onButtonPress}
             disabled={!!error || disabled}
         >
@@ -34,6 +34,9 @@ MAButton.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+    buttonWrapper: {
+        ...sizings.fullWidth,
+    },
     button: {
         alignItems: 'center',
         justifyContent: 'center',
