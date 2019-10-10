@@ -11,7 +11,7 @@ import { login, checkLogin } from '@/store/actions';
 
 const ERROR_MESSAGE = 'Provide a name longer than 2 characters!';
 
-export default function Index() {
+const Login = () => {
     const [name, setName] = useState('');
     const [touched, setTouched] = useState(false);
     const [error, setError] = useState('');
@@ -65,7 +65,7 @@ export default function Index() {
             </View>
         </LinearGradient>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -102,3 +102,5 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
 });
+
+export default Login;

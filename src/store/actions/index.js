@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import { db } from '@/firebase.config';
 import { LOGIN, LOGOUT, FETCH_MESSAGES, POST_MESSAGE } from '@/store/actions/types';
-import navigationService from '@/services/navigationService';
+import navigationService from '@/services/NavigationService';
 
 const setUser = (name, userId) => ({
     type: LOGIN,

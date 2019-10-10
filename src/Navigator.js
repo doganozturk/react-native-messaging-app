@@ -1,7 +1,7 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, HeaderBackButton } from 'react-navigation-stack';
-import navigationService from '@/services/navigationService';
+import navigationService from '@/services/NavigationService';
 import store from '@/store';
 import { logout } from '@/store/actions';
 import Login from '@/containers/Login';
@@ -40,12 +40,10 @@ const AppNavigator = createStackNavigator(
 
 const AppContainer = createAppContainer(AppNavigator);
 
-export default function Navigator() {
+const Navigator = () => {
     return (
-        <AppContainer
-            ref={navigatorRef => {
-                navigationService.setTopLevelNavigator(navigatorRef);
-            }}
-        />
+        <AppContainer ref={navigatorRef => navigationService.setTopLevelNavigator(navigatorRef)} />
     );
-}
+};
+
+export default Navigator;

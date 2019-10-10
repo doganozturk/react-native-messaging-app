@@ -3,14 +3,7 @@ import { TextInput, StyleSheet, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { colors } from '@/theming/colors';
 
-export function MATextInput({
-    placeholder,
-    autoCorrect,
-    autoCapitalize,
-    value,
-    onChangeText,
-    error,
-}) {
+const MATextInput = ({ placeholder, autoCorrect, autoCapitalize, value, onChangeText, error }) => {
     const renderError = () => {
         if (!error) {
             return null;
@@ -32,7 +25,7 @@ export function MATextInput({
             {renderError()}
         </>
     );
-}
+};
 
 MATextInput.propTypes = {
     placeholder: PropTypes.string,
@@ -71,3 +64,5 @@ const styles = StyleSheet.create({
         color: colors.pink,
     },
 });
+
+export { MATextInput };

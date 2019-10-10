@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { colors, sizings } from '@/theming';
 
-export function MAButton({ text, onButtonPress, error, disabled }) {
+const MAButton = ({ text, onButtonPress, error, disabled }) => {
     return (
         <TouchableOpacity
             style={styles.buttonWrapper}
@@ -19,7 +19,7 @@ export function MAButton({ text, onButtonPress, error, disabled }) {
             </LinearGradient>
         </TouchableOpacity>
     );
-}
+};
 
 MAButton.propTypes = {
     text: PropTypes.string.isRequired,
@@ -52,3 +52,5 @@ const styles = StyleSheet.create({
         color: colors.lightgray,
     },
 });
+
+export { MAButton };

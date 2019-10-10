@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { colors } from '@/theming';
 import { getTimeFromDate } from '@/util';
 
-export function Time({ timestamp, style }) {
+const Time = ({ timestamp, style }) => {
     return <Text style={[styles.time, style]}>{getTimeFromDate(timestamp)}</Text>;
-}
+};
 
 Time.propTypes = {
     timestamp: PropTypes.number.isRequired,
@@ -23,3 +23,5 @@ const styles = StyleSheet.create({
         color: colors.pink,
     },
 });
+
+export { Time };

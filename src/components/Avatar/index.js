@@ -3,9 +3,9 @@ import { Image, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { colors } from '@/theming';
 
-export function Avatar({ src, style }) {
+const Avatar = ({ src, style }) => {
     return <Image style={[styles.image, style]} source={{ uri: src }} />;
-}
+};
 
 Avatar.propTypes = {
     src: PropTypes.string.isRequired,
@@ -25,3 +25,5 @@ const styles = StyleSheet.create({
         borderColor: colors.lavender,
     },
 });
+
+export { Avatar };

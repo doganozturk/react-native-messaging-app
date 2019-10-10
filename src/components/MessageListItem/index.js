@@ -7,7 +7,7 @@ import { colors } from '@/theming';
 import { Avatar } from '@/components/Avatar';
 import { Time } from '@/components/Time';
 
-export function MessageListItem({ message }) {
+const MessageListItem = ({ message }) => {
     const userId = useSelector(state => state.auth.userId);
     const isUserMessage = message.user.id === userId;
 
@@ -25,7 +25,7 @@ export function MessageListItem({ message }) {
             <Time style={styles.time} timestamp={message.timestamp} />
         </View>
     );
-}
+};
 
 MessageListItem.propTypes = {
     message: PropTypes.shape({
@@ -80,3 +80,5 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
 });
+
+export { MessageListItem };

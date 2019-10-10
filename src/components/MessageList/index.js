@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { MessageListItem } from '@/components/MessageListItem';
 
-export function MessageList({ messages }) {
+const MessageList = ({ messages }) => {
     const flatlistRef = useRef();
 
     return (
@@ -19,7 +19,7 @@ export function MessageList({ messages }) {
             }}
         />
     );
-}
+};
 
 MessageList.propTypes = {
     messages: PropTypes.arrayOf(MessageListItem.propTypes.message),
@@ -37,3 +37,5 @@ const styles = StyleSheet.create({
         width: '100%',
     },
 });
+
+export { MessageList };
